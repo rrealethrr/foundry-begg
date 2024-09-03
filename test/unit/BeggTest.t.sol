@@ -8,7 +8,7 @@ import {DeployBegg} from "../../script/DeployBegg.s.sol";
 
 contract BeggTest is Test {
     Begg begg;
-    
+
     address USER = makeAddr("user");
     uint256 constant SEND_VALUE = 0.1 ether;
     uint256 constant STARTING_BALANCE = 10 ether;
@@ -22,7 +22,7 @@ contract BeggTest is Test {
     }
 
     function testMinDollarIsFive() public view {
-        assertEq(begg.MINIMUM_USD(), 5*10**18);
+        assertEq(begg.MINIMUM_USD(), 5 * 10 ** 18);
     }
 
     function testOwnerIsMsgSender() public view {
@@ -78,7 +78,7 @@ contract BeggTest is Test {
     function testWithdrawWithMultipleFunders() public funded {
         uint160 numberOfFunders = 10;
         uint160 startingFunderIndex = 2;
-        for(uint160 i = startingFunderIndex; i < numberOfFunders; i++) {
+        for (uint160 i = startingFunderIndex; i < numberOfFunders; i++) {
             hoax(address(i), SEND_VALUE);
             begg.fund{value: SEND_VALUE}();
         }
@@ -91,13 +91,13 @@ contract BeggTest is Test {
         vm.stopPrank();
 
         assert(address(begg).balance == 0);
-        assert(startingBeggBalance + startingOwnerBalance == begg.getOwner().balance); 
+        assert(startingBeggBalance + startingOwnerBalance == begg.getOwner().balance);
     }
 
     function testWithdrawWithMultipleFundersCheaper() public funded {
         uint160 numberOfFunders = 10;
         uint160 startingFunderIndex = 2;
-        for(uint160 i = startingFunderIndex; i < numberOfFunders; i++) {
+        for (uint160 i = startingFunderIndex; i < numberOfFunders; i++) {
             hoax(address(i), SEND_VALUE);
             begg.fund{value: SEND_VALUE}();
         }
@@ -110,6 +110,6 @@ contract BeggTest is Test {
         vm.stopPrank();
 
         assert(address(begg).balance == 0);
-        assert(startingBeggBalance + startingOwnerBalance == begg.getOwner().balance); 
+        assert(startingBeggBalance + startingOwnerBalance == begg.getOwner().balance);
     }
 }

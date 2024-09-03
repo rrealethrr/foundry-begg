@@ -17,9 +17,7 @@ contract FundBegg is Script {
     }
 
     function run() external {
-        address mostRecentlyDeployed = DevOpsTools.get_most_recent_deployment(
-            "Begg", block.chainid
-        );
+        address mostRecentlyDeployed = DevOpsTools.get_most_recent_deployment("Begg", block.chainid);
         vm.startBroadcast();
         fundBegg(mostRecentlyDeployed);
         vm.stopBroadcast();
@@ -36,10 +34,7 @@ contract WithdrawBegg is Script {
     }
 
     function run() external {
-        address mostRecentlyDeployed = DevOpsTools.get_most_recent_deployment(
-            "Begg", block.chainid
-        );
+        address mostRecentlyDeployed = DevOpsTools.get_most_recent_deployment("Begg", block.chainid);
         withdrawBegg(mostRecentlyDeployed);
     }
 }
-

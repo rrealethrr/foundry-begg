@@ -7,7 +7,6 @@ import {Begg} from "../src/Begg.sol";
 import {HelperConfig} from "./HelperConfig.s.sol";
 
 contract DeployBegg is Script {
-
     HelperConfig helperConfig = new HelperConfig();
     address ethUsdPriceFeed = helperConfig.activeNetworkConfig();
 
@@ -17,5 +16,4 @@ contract DeployBegg is Script {
         vm.stopBroadcast();
         return begg;
     }
-
 }

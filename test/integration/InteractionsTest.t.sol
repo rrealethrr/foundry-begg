@@ -9,7 +9,7 @@ import {FundBegg, WithdrawBegg} from "../../script/Interactions.s.sol";
 
 contract InteractionsTest is Test {
     Begg begg;
-    
+
     address USER = makeAddr("user");
     uint256 constant SEND_VALUE = 0.1 ether;
     uint256 constant STARTING_BALANCE = 10 ether;
@@ -18,7 +18,7 @@ contract InteractionsTest is Test {
     function setUp() external {
         DeployBegg deploy = new DeployBegg();
         begg = deploy.run();
-        vm.deal(USER, STARTING_BALANCE);    
+        vm.deal(USER, STARTING_BALANCE);
     }
 
     function testUserCanFundInteractions() public {
